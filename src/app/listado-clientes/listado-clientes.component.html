@@ -1,0 +1,22 @@
+<div class="container mt-5">
+
+  <h4>Listado de Clientes</h4>
+
+  <form action="">
+    <div class="form-group">
+      <input class="form-control" type="text" placeholder="Buscar un Cliente">
+    </div>
+  </form>
+  <div class="row">
+    <div class="col-sm-3" *ngFor="let clientes of clientes">
+      <div class="card">
+        <img class="card-img-top imgClientes" [src]="clientes.ImgUrl">
+        <div class="card-body">
+          <h5 class="card-title">{{clientes.nombre}} {{clientes.apellido}}</h5>
+          <a [routerLink]="['/agregar-clientes/', clientes.id]" class="card-link">Editar</a>
+          <a class="card-link text-danger" >Desactivar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

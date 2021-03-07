@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "riversport-add06": {
+      "hosting": {
+        "Sport-River": [
+          "riversport-add06"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "riversport-add06"
+  }
+}

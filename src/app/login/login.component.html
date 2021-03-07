@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="text-center">
+    <img id="logo" src="assets/logo.png" width="320px" height="180px">
+    <h3>Bienvenido, por favor ingrese sus datos</h3>
+  </div>
+
+  <form [formGroup]="formularioLogin">
+    <div class="mb-3">
+      <label for="email">Correo Electronico</label>
+      <input type="email" class="form-control" id="email" formControlName="email" aria-describedby="emailHelp" placeholder="Ingrese su correo  electrónico">
+      <div *ngIf="formularioLogin.controls['email'].invalid && formularioLogin.controls['email'].dirty" class="alert alert-danger" roles="alert">
+          <span *ngIf="formularioLogin.controls['email'].errors?.required">  Correo es requerido</span>
+          <span *ngIf="formularioLogin.controls['email'].errors?.email">Correo no es Valido</span>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="password">Password</label>
+      <input type="password" (keyup.enter)="ingresar()" class="form-control" id="password" formControlName="password" placeholder="Ingrese su contraseña">
+    </div>
+    <button type="submit" (click)="ingresar()" [disabled]="!formularioLogin.valid" class="btn btn-primary">Ingresar</button>
+    <div *ngIf="formularioLogin.controls['password'].invalid && formularioLogin.controls['password'].dirty" class="alert alert-danger" role="alert">
+          <span *ngIf="formularioLogin.controls['password'].errors?.required">La contraseña es requerida</span>
+          <span *ngIf="formularioLogin.controls['password'].errors?.minlength">La contraseña debe ser mayor que 5 caracteres</span>
+    </div>
+  </form>
+
+  <div *ngIf="!datosCorrectos" class="alert alert-warning" role="alert">
+   {{textoError}}
+  </div>
+
+  <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "pacman" [fullScreen] = "true"  animation:3s><p style="color: white" >Ingresando a la Aplicación</p></ngx-spinner>
+</div>
